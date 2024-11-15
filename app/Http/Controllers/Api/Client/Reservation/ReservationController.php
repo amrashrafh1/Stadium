@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Api\Client\Reservation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Client\AvailableSlotRequest;
 use App\Http\Requests\API\Client\ReservationRequest;
-use App\Http\Requests\API\Reservation\CartRequest;
 use App\Http\Resources\API\Client\ReservationResource;
 use App\Http\Resources\API\Provider\User\ScheduleResource;
-use App\Models\Reservation;
 use App\Models\Schedule;
 use App\Services\ReservationService;
 use App\Traits\ResponseTrait;
@@ -96,5 +94,4 @@ class ReservationController extends Controller
         }
 
     }
-
 }

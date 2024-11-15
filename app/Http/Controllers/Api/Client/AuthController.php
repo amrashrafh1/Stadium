@@ -32,6 +32,7 @@ class AuthController extends Controller
             $this->userService->generateAndSaveOtp($user);
             DB::commit();
             return $this->successResponse(['user' => new \App\Http\Resources\API\Client\AuthResource($user)], __('auth.otpSent'));
+
         } catch (\Exception $e) {
             DB::rollback();
             return $this->errorResponse(__('error.someThingWrong'), 422);
@@ -54,6 +55,7 @@ class AuthController extends Controller
 
             DB::commit();
             return $this->successResponse(['user' => new AuthResource($user), 'token' => $token], __('auth.otpSent'));
+
         } catch (\Exception $e) {
             DB::rollback();
             \Log::info($e->getMessage());

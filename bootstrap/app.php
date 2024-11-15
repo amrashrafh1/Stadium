@@ -21,7 +21,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('/api/client')
                 ->middleware(['auth:api', \App\Http\Middleware\ClientMiddleware::class])
                 ->group(base_path('routes/client.php'));
-
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

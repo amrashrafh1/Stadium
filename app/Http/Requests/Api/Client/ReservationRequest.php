@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\API\Client;
+namespace App\Http\Requests\Api\Client;
 
 use App\Http\Requests\Api\RequestBaseAPI;
 
@@ -37,6 +37,7 @@ class ReservationRequest extends RequestBaseAPI
 
             case 'PUT':
                 return [
+
                 ];
 
             default:

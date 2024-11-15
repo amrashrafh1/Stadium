@@ -264,4 +264,5 @@ class ReservationService
             ->where('reservation_date', Carbon::parse($data['date'] . ' ' . $data['from'])->format('Y-m-d H:i'))
             ->exists();
     }
+
 }
