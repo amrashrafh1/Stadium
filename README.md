@@ -32,10 +32,10 @@ A simple and efficient API built with Laravel for managing stadium bookings. The
 
 Before running the project, ensure you have the following installed:
 
--   [PHP 8.1+](https://www.php.net/)
+-   [PHP 8.2+](https://www.php.net/)
 -   [Composer](https://getcomposer.org/)
 -   [MySQL](https://www.mysql.com/) or another supported database
--   [Laravel 10+](https://laravel.com/)
+-   [Laravel 11+](https://laravel.com/)
 -   [Node.js](https://nodejs.org/) and npm/yarn for front-end dependencies (if applicable)
 
 * * * * *
@@ -49,8 +49,8 @@ Before running the project, ensure you have the following installed:
 
     Copy code
 
-    `git clone https://github.com/your-username/stadium-booking-api.git
-    cd stadium-booking-api`
+    `git clone https://github.com/amrashrafh1/Stadium.git
+    cd stadium`
 
 2.  **Install Dependencies**
 
@@ -58,8 +58,7 @@ Before running the project, ensure you have the following installed:
 
     Copy code
 
-    `composer install
-    npm install`
+    `composer install` 
 
 3.  **Environment Configuration** Copy the `.env.example` file to `.env` and update the database credentials.
 
@@ -89,6 +88,16 @@ Before running the project, ensure you have the following installed:
     Copy code
 
     `php artisan key:generate`
+
+
+5.  **Generate Passport keys**
+
+    bash
+
+    Copy code
+
+    `php artisan passport:keys`
+    `php artisan passport:client --personal`
 
 * * * * *
 
@@ -149,11 +158,11 @@ Before running the project, ensure you have the following installed:
 
     Copy code
 
-    `GET /api/stadiums/1/pitches/2/available-slots?date=2024-11-16`
+    `GET /api/client/reservations/get-time-slots?pitch_id=1&date=2024-11-16`
 
 ### **2\. Book a Pitch**
 
--   **POST** `/api/bookings`
+-   **POST** `/api/client/reservations/book`
 -   **Description**: Books a slot for a given pitch.
 -   **Request Body**:
 
@@ -162,21 +171,9 @@ Before running the project, ensure you have the following installed:
     Copy code
 
     `{
-      "slot_id": 10,
-      "user_id": 1
-    }`
-
--   **Example Response**:
-
-    json
-
-    Copy code
-
-    `{
-      "message": "Slot successfully booked.",
-      "data": {
-        "booking_id": 42
-      }
+      "pitch_id": 1,
+      "date": "2024-11-16",
+      "slot_id": 5,
     }`
 
 * * * * *
@@ -198,38 +195,6 @@ Copy code
 │   ├── api.php            # API routes
 ├── tests/                 # Automated tests
 └── ...`
-
-* * * * *
-
-**Contributing**
-----------------
-
-1.  Fork the repository.
-2.  Create a new feature branch.
-
-    bash
-
-    Copy code
-
-    `git checkout -b feature/your-feature-name`
-
-3.  Commit your changes.
-
-    bash
-
-    Copy code
-
-    `git commit -m "Add your message here"`
-
-4.  Push to your branch.
-
-    bash
-
-    Copy code
-
-    `git push origin feature/your-feature-name`
-
-5.  Open a pull request.
 
 * * * * *
 
