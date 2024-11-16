@@ -84,11 +84,10 @@ class ReservationController extends Controller
 
             $reservation = $this->reservationService->createReservation($data);
             DB::commit();
-            return $this->successResponse(new ReservationResource($reservation));
+            return $this->successResponse(new ReservationResource($reservation), __('success.reservationCreated'));
 
         } catch (\Exception $e) {
             DB::rollBack();
-            \Log::info($e->getMessage());
             return $this->errorResponse(__('error.someThingWrong'), 422);
         }
 
