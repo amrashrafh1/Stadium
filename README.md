@@ -141,7 +141,7 @@ Before running the project, ensure you have the following installed:
 
 2.  **Access the API** Visit the API at http://127.0.0.1:8000.
 
-3.  **Testing the API** Use tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/) to test the API endpoints.
+3.  **Testing the API** Use tools like [Postman](https://documenter.getpostman.com/view/27553073/2sAYBPku6f) to test the API endpoints.
 
 * * * * *
 
