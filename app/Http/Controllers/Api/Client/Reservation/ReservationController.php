@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Client\AvailableSlotRequest;
 use App\Http\Requests\API\Client\ReservationRequest;
 use App\Http\Resources\API\Client\ReservationResource;
-use App\Http\Resources\API\Provider\User\ScheduleResource;
+use App\Http\Resources\API\Client\ScheduleResource;
 use App\Models\Schedule;
 use App\Services\ReservationService;
 use App\Traits\ResponseTrait;
@@ -70,7 +70,7 @@ class ReservationController extends Controller
                 return $this->errorResponse(__('error.pitchNotAvailable'), 422);
             }
 
-            if ($this->reservationService->checkIfTimeSlotIsAvailable($request->validated())) {
+            if ($this->reservationService->checkIfTimeSlotIsAvailable($pitch, $request->validated())) {
                 DB::rollBack();
                 return $this->errorResponse(__('error.scheduleNotAvailable'), 422);
             }
@@ -83,7 +83,6 @@ class ReservationController extends Controller
             }
 
             $reservation = $this->reservationService->createReservation($data);
-
             DB::commit();
             return $this->successResponse(new ReservationResource($reservation));
 

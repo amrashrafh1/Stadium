@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\API\Provider\User;
+namespace App\Http\Resources\API\Client;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -31,7 +31,6 @@ class ScheduleResource extends JsonResource
         return [
             'id'     => $this->id,
             'day'    => $this->day,
-            'date'   => $this->date,
             'slots'  => SlotResource::collection($this->getAvailableSlots())
         ];
     }

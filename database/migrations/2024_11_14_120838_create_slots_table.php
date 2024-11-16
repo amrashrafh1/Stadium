@@ -15,7 +15,7 @@ return new class extends Migration
         {
             $table->id();
             $table->string('from');
-            $table->string('to')->nullable();
+            $table->string('to');
             $table->boolean('is_active')->default(true);
             $table->foreignId('schedule_id')->constrained('schedules')->onDelete('cascade');
             $table->timestamps();

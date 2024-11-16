@@ -9,7 +9,7 @@ Route::group(['namespace' => 'Client'], function () {
 
 Route::group(['prefix' => 'reservations', 'namespace' => 'Client\Reservation'], function () {
     Route::post('/get-time-slots', 'ReservationController@getTimeSlots');
-    Route::post('/reservation', 'ReservationController@reservation');
+    Route::post('/book', 'ReservationController@reservation');
     Route::get('/', 'ReservationController@index');
     Route::get('/{id}', 'ReservationController@show');
 });

@@ -47,7 +47,7 @@ class ReservationResource extends JsonResource
             'created_at'       => Carbon::parse($this->created_at)->format('Y-m-d h:i A'),
             'reservation_date' => $this->reservation_date->format('Y-m-d h:i A'),
             'user'             => new AuthResource($this->user),
-            'pitch'            => new StadiumResource($this->pitch),
+            'pitch'            => new PitchResource($this->pitch),
         ];
 
     }

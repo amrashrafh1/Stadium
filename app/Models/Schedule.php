@@ -45,9 +45,16 @@ class Schedule extends Model
             $is_today = true;
         }
 
-        return $this->slots()->active()
+        // get active reservation for this schedule ( same day )
+        $reservations = $this->reservations()
+            ->where('schedule_id', $this->id)
+            ->whereDate('reservation_date', $date)
+            ->pluck('slot_id')->toArray();
+
+        // get available slots
+        return $this->slots()->active()->whereNotIn('id', $reservations)
             ->when($is_today, function ($q) {
-                $q->whereTime('from', '>=', now()->format('H:i:s'));
+                $q->whereTime('from', '>=', now()->format('H:i'));
             })->get();
     }
 

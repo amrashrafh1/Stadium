@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Resources\API\Provider\User;
+namespace App\Http\Resources\API\Client;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 

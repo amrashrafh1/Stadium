@@ -29,7 +29,7 @@ class StadiumSeeder extends Seeder
             ['name' => 'Pitch 3', 'price' => 75],
         ];
         // Assign pitches to each stadium
-        foreach ($stadiums as $index => $stadium) {
+        foreach ($stadiums as $stadium) {
             foreach ($pitchesData as $pitch) {
                 $stadium->pitches()->create($pitch);
             }

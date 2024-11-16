@@ -16,7 +16,7 @@ class AvailableSlotRequest extends RequestBaseAPI
     {
         return [
             'pitch_id' => 'required|exists:pitches,id',
-            'date'     => 'required|date_format:Y-m-d',
+            'date'     => 'required|date_format:Y-m-d|after_or_equal:today',
         ];
     }
 

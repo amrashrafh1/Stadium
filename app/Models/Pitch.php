@@ -14,6 +14,11 @@ class Pitch extends Model
         return $this->belongsTo(Stadium::class);
     }
 
+    public function schedules() : \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Schedule::class, 'scheduleable');
+    }
+
 
 
 }

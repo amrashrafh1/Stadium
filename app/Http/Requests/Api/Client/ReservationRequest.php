@@ -32,7 +32,6 @@ class ReservationRequest extends RequestBaseAPI
                     'date'     => 'required|date_format:Y-m-d',
                     'pitch_id' => 'required|exists:pitches,id',
                     'slot_id'  => 'required|exists:slots,id',
-                    'period'   => 'required|in:60,90',
                 ];
 
             case 'PUT':

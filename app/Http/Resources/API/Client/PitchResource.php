@@ -36,9 +36,10 @@ class PitchResource extends JsonResource
     {
 
         return [
-            'id'    => $this->id,
-            'name'  => $this->name,
-            'price' => number_format($this->price, 2, '.', ''),
+            'id'        => $this->id,
+            'name'      => $this->name,
+            'price'     => number_format($this->price, 2, '.', ''),
+            'schedules' => ScheduleResource::collection($this->whenLoaded('schedules')),
         ];
     }
 

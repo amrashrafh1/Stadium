@@ -201,7 +201,6 @@ class ReservationService
         $schedule = $pitch->schedules()
             ->where('day', $date->translatedFormat('l'))
             ->whereHas('slots')
-            ->where('date', null)
             ->with('slots')
             ->first();
 
@@ -249,20 +248,23 @@ class ReservationService
         $data['reservation_date'] = Carbon::parse($data['date'] . ' ' . $slot->from)->format('Y-m-d H:i:s');
         $data['slot_id']          = $slot->id;
         $data['schedule_id']      = $schedule->id;
-        $data['total']            = $pitch->price * ($data['period'] / 60);
+        $data['total']            = $pitch->price;
         return $data;
     }
 
     public function createReservation($data)
     {
-        return Reservation::create($data);
+        return Reservation::create(Arr::except($data, ['date']));
     }
 
-    public function checkIfTimeSlotIsAvailable($data)
+    public function checkIfTimeSlotIsAvailable($pitch, $data): bool
     {
-        return Reservation::where('slot_id', $data['slot_id'])
-            ->where('reservation_date', Carbon::parse($data['date'] . ' ' . $data['from'])->format('Y-m-d H:i'))
-            ->exists();
+        $schedule     = $this->getSchedule($pitch, $data);
+        $reservations = Reservation::where('schedule_id', $schedule->id)
+            ->whereDate('reservation_date', $data['date'])
+            ->pluck('slot_id')->toArray();
+
+        return in_array($data['slot_id'], $reservations);
     }
 
 }

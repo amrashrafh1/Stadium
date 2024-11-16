@@ -13,7 +13,7 @@ class StadiumController
 
     public function index(Request $request)
     {
-        $stadiums = Stadium::query();
+        $stadiums = Stadium::query()->with('pitches.schedules.slots');
 
         if ($request->is_paginated) {
             $stadiums = $stadiums->paginate(10);

@@ -39,7 +39,6 @@ class StadiumResource extends JsonResource
             'id'        => $this->id,
             'name'      => $this->name,
             'location'  => $this->location,
-            'is_active' => $this->is_active,
             'pitches'   => PitchResource::collection($this->pitches),
         ];
     }
